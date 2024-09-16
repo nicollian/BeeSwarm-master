@@ -1,1 +1,15 @@
+<launch>
+  <!-- 定义uav_count 参数，用于指定无人机数量，默认值为3 -->
+  <arg name="uav_count" default="3"/>
+
+  <!-- 启动uav_pose_pub_node，执行uav_pose_pub程序，输出打印在屏幕上 -->
+  <node name="uav_pose_pub_node" pkg="swarm_control" type="uav_pose_pub" output="screen">
+    <param name="uav_count" value="$(arg uav_count)" />
+  </node>
+  <!-- 无人机数量通过uav_count参数传递 -->
+
+  <!-- 启动 uav_control_node -->
+  <node name="uav_control_node" pkg="swarm_control" type="uav_control" output="screen"/>
+
+</launch>
 
